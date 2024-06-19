@@ -1,20 +1,17 @@
 ## ENV VARIABLES
 .\Variables.ps1
 
-## ALIAS
-Remove-Alias "cd"
+# STARSHIP
 
-Set-Alias "cd" "z"
-
-## PROGRAMS
 Invoke-Expression (&starship init powershell)
-
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
+# ALIAS
+
+Set-Alias cd z
+Set-Alias which gcm
+
 ## GENERAL FUNCTIONS
-
-function l { lsd -l }
-
 function yy {
     $tmp = [System.IO.Path]::GetTempFileName()
     yazi $args --cwd-file="$tmp"
@@ -25,6 +22,9 @@ function yy {
     Remove-Item -Path $tmp
 }
 
-# ENV FUNCTIONS
+function l { 
+  lsd -la
+}
 
+# ENV FUNCTIONS
 .\Functions.ps1
