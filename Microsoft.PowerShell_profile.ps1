@@ -1,9 +1,14 @@
 # STARSHIP
-
 Invoke-Expression (&starship init powershell)
+
+# ZOXIDE
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
-## GENERAL FUNCTIONS
+# ALIASES
+# Set-Alias l /Powershell/lsd.ps1
+Set-Alias which gcm
+
+# GENERAL FUNCTIONS
 function yy {
     $tmp = [System.IO.Path]::GetTempFileName()
     yazi $args --cwd-file="$tmp"
@@ -14,7 +19,6 @@ function yy {
     Remove-Item -Path $tmp
 }
 
-function l { 
-  lsd -la
+function l {
+  lsd -la --tree --depth 1
 }
-
