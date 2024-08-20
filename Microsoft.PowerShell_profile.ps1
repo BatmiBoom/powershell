@@ -19,6 +19,11 @@ function yy {
     Remove-Item -Path $tmp
 }
 
+function reset_nvim {
+  rm -r ~/AppData/Local/nvim-data
+  # rm -rf ~/.local/share/nvim && rm -rf ~/.local/state/nvim && rm -rf ~/.cache/nvim
+}
+
 function l {
   lsd -l $args
 }
