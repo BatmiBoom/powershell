@@ -6,7 +6,7 @@ Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 # ALIASES
 # Set-Alias l /Powershell/lsd.ps1
-Set-Alias which gcm
+Set-Alias -Name which -Value gcm
 
 # GENERAL FUNCTIONS
 function yy {
@@ -20,5 +20,9 @@ function yy {
 }
 
 function l {
+  lsd -l $args
+}
+
+function tree {
   lsd -la --tree --depth 1
 }
