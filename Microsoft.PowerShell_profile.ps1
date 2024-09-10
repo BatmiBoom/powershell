@@ -6,9 +6,9 @@ Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 # ALIASES
 # Set-Alias l /Powershell/lsd.ps1
-Set-Alias -Name which -Value gcm
+# Set-Alias -Name q -Value gcm 
 
-# GENERAL FUNCTIONS
+# EXPLORER
 function yy {
     $tmp = [System.IO.Path]::GetTempFileName()
     yazi $args --cwd-file="$tmp"
@@ -19,9 +19,9 @@ function yy {
     Remove-Item -Path $tmp
 }
 
-function reset_nvim {
-  rm -r ~/AppData/Local/nvim-data
-  # rm -rf ~/.local/share/nvim && rm -rf ~/.local/state/nvim && rm -rf ~/.cache/nvim
+# UTILS
+function q {
+  gcm $args | Select source
 }
 
 function l {
@@ -30,4 +30,9 @@ function l {
 
 function tree {
   lsd -la --tree --depth 1
+}
+
+# DOCKER
+function docker-stop {
+  docker stop $(docker ps -q)
 }
