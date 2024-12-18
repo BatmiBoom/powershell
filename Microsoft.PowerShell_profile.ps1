@@ -4,6 +4,9 @@ Invoke-Expression (&starship init powershell)
 # ZOXIDE
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
+# PYENV
+#Invoke-Expression (&pyenv init -)
+
 # ALIASES
 # Set-Alias l /Powershell/lsd.ps1
 # Set-Alias -Name q -Value gcm 
@@ -32,7 +35,15 @@ function tree {
   lsd -la --tree --depth 1
 }
 
+function git-last-five-commit {
+    git log | rg "commit" -m 5
+}
+
 # DOCKER
 function docker-stop {
   docker stop $(docker ps -q)
+}
+
+function git-reset {
+    git reset --hard $args
 }
